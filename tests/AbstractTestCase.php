@@ -11,14 +11,14 @@
 
 namespace Tobscure\Tests\JsonApi;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This is the abstract test case class.
  *
  * @author Vincent Klaiber <hello@vinkla.com>
  */
-abstract class AbstractTestCase extends PHPUnit_Framework_TestCase
+abstract class AbstractTestCase extends TestCase
 {
     //
 }

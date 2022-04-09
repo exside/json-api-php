@@ -1,5 +1,5 @@
 {
-    "name": "tobscure/json-api",
+    "name": "sycho/json-api",
     "description": "JSON-API responses in PHP",
     "keywords": ["json", "api", "standard", "jsonapi"],
     "license": "MIT",
@@ -10,10 +10,11 @@
         }
     ],
     "require": {
-        "php": "^5.5.9 || ^7.0"
+        "php": "^7.3 || ^8.0",
+        "ext-json": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8 || ^5.0"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {

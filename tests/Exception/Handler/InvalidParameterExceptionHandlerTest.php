@@ -9,14 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Tobscure\Tests\Exception\Handler;
+namespace Tobscure\Tests\JsonApi\Exception\Handler;
 
 use Exception;
+use PHPUnit\Framework\TestCase;
 use Tobscure\JsonApi\Exception\Handler\InvalidParameterExceptionHandler;
 use Tobscure\JsonApi\Exception\Handler\ResponseBag;
 use Tobscure\JsonApi\Exception\InvalidParameterException;
 
-class InvalidParameterExceptionHandlerTest extends \PHPUnit_Framework_TestCase
+class InvalidParameterExceptionHandlerTest extends TestCase
 {
     public function testHandlerCanManageInvalidParameterExceptions()
     {

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Tobscure\Tests\JsonApi\Element;
+namespace Tobscure\Tests\JsonApi;
 
 use Tobscure\JsonApi\AbstractSerializer;
 use Tobscure\JsonApi\Collection;

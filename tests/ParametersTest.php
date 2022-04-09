@@ -11,6 +11,7 @@
 
 namespace Tobscure\Tests\JsonApi;
 
+use Tobscure\JsonApi\Exception\InvalidParameterException;
 use Tobscure\JsonApi\Parameters;
 
 /**
@@ -34,12 +35,10 @@ class ParametersTest extends AbstractTestCase
         $this->assertEquals([], $parameters->getInclude(['posts', 'images']));
     }
 
-    /**
-     * @expectedException \Tobscure\JsonApi\Exception\InvalidParameterException
-     * @expectedExceptionCode 1
-     */
     public function testGetIncludeWithUnallowedField()
     {
+        $this->expectExceptionCode(1);
+        $this->expectException(InvalidParameterException::class);
         $parameters = new Parameters(['include' => 'posts,images']);
 
         $parameters->getInclude(['posts']);
@@ -66,12 +65,10 @@ class ParametersTest extends AbstractTestCase
         $this->assertEmpty($parameters->getSort());
     }
 
-    /**
-     * @expectedException \Tobscure\JsonApi\Exception\InvalidParameterException
-     * @expectedExceptionCode 3
-     */
     public function testGetSortWithUnallowedField()
     {
+        $this->expectExceptionCode(3);
+        $this->expectException(InvalidParameterException::class);
         $parameters = new Parameters(['sort' => 'firstname,lastname']);
 
         $parameters->getSort(['firstname']);
@@ -84,12 +81,10 @@ class ParametersTest extends AbstractTestCase
         $this->assertEquals(10, $parameters->getOffset());
     }
 
-    /**
-     * @expectedException \Tobscure\JsonApi\Exception\InvalidParameterException
-     * @expectedExceptionCode 2
-     */
     public function testGetOffsetIsAtLeastZero()
     {
+        $this->expectExceptionCode(2);
+        $this->expectException(InvalidParameterException::class);
         $parameters = new Parameters(['page' => ['offset' => -5]]);
 
         $parameters->getOffset();

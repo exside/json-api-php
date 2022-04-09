@@ -60,11 +60,9 @@ class AbstractSerializerTest extends AbstractTestCase
         $this->assertTrue($relationship instanceof Relationship);
     }
 
-    /**
-     * @expectedException \LogicException
-     */
     public function testGetRelationshipValidatesRelationship()
     {
+        $this->expectException(\LogicException::class);
         $serializer = new PostSerializer1;
 
         $serializer->getRelationship(null, 'invalid');
