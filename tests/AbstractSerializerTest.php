@@ -51,6 +51,15 @@ class AbstractSerializerTest extends AbstractTestCase
         $this->assertTrue($relationship instanceof Relationship);
     }
 
+    public function testGetRelationshipReturnsRelationshipFromMethodUnderscoredPrioritizingUnderscoredMethod()
+    {
+        $serializer = new PostSerializer1;
+
+        $relationship = $serializer->getRelationship(null, 'first_post');
+
+        $this->assertTrue($relationship instanceof Relationship);
+    }
+
     public function testGetRelationshipReturnsRelationshipFromMethodKebabCase()
     {
         $serializer = new PostSerializer1;
@@ -90,6 +99,18 @@ class PostSerializer1 extends AbstractSerializer
         $element = new Resource([], new self);
 
         return new Relationship($element);
+    }
+
+    public function first_post($post)
+    {
+        $element = new Resource([], new self);
+
+        return new Relationship($element);
+    }
+
+    public function firstPost($post)
+    {
+        return null;
     }
 
     public function invalid($post)

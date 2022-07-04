@@ -69,7 +69,7 @@ abstract class AbstractSerializer implements SerializerInterface
      */
     public function getRelationship($model, $name)
     {
-        $method = $this->getRelationshipMethodName($name);
+        $method = method_exists($this, $name) ? $name : $this->getRelationshipMethodName($name);
 
         if (method_exists($this, $method)) {
             $relationship = $this->$method($model);
