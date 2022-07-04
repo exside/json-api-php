@@ -69,6 +69,10 @@ abstract class AbstractSerializer implements SerializerInterface
      */
     public function getRelationship($model, $name)
     {
+        // commit https://github.com/SychO9/json-api-php/commit/8d4116ec580febf36d7e6995829a6f5adf6f9c48
+        // was a breaking change to underscore relatonship names.
+        // This one liner keeps the new behavior while still supporting underscore relationships,
+        // by checking first if the method exits before converting the name to camel-case.
         $method = method_exists($this, $name) ? $name : $this->getRelationshipMethodName($name);
 
         if (method_exists($this, $method)) {
