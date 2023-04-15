@@ -118,6 +118,10 @@ class Parameters
             $limit = min($max, $limit);
         }
 
+        if ($limit && $limit <= 0) {
+            throw new InvalidParameterException('page[limit] must be >0', 2, null, 'page[limit]');
+        }
+
         return $limit;
     }
 
@@ -188,7 +192,14 @@ class Parameters
      */
     public function getFilter()
     {
-        return $this->getInput('filter');
+        if ($filter = $this->getInput('filter')) {
+            if (! is_array($filter)) {
+                $names = explode(',', $filter);
+                $filter = array_fill_keys($names, "");
+            }
+        }
+
+        return $filter;
     }
 
     /**
