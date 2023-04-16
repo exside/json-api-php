@@ -188,11 +188,13 @@ class Parameters
     /**
      * Get a filter item.
      *
-     * @return mixed
+     * @return array
      */
     public function getFilter()
     {
         if ($filter = $this->getInput('filter')) {
+            // In case we have filter=foo,bar,baz
+            // we will convert it to filter[foo]=,filter[bar]=,filter[baz]=
             if (! is_array($filter)) {
                 $names = explode(',', $filter);
                 $filter = array_fill_keys($names, "");
