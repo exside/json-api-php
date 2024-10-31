@@ -46,7 +46,7 @@ class Parameters
 
             if (count($invalid)) {
                 throw new InvalidParameterException(
-                    'Invalid includes ['.implode(',', $invalid).']',
+                    'Invalid includes ['.implode(',', $invalid).'] not found in ['.implode(',', $available).']',
                     1,
                     null,
                     'include'
@@ -156,7 +156,7 @@ class Parameters
 
             if (count($invalid)) {
                 throw new InvalidParameterException(
-                    'Invalid sort fields ['.implode(',', $invalid).']',
+                    'Invalid sort fields ['.implode(',', $invalid).'] not found in ['.implode(',', $available).']',
                     3,
                     null,
                     'sort'
